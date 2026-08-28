@@ -7,4 +7,4 @@
 
 ## ✨ 快速使用
 
-  cover.emos.dpdns.org
+  https://cover.emos.dpdns.org
