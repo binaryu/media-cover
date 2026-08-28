@@ -153,6 +153,8 @@
       margin-bottom: 2px;
     }
 
+
+
     .preset-mode-group {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -297,6 +299,42 @@
       background: rgba(59, 130, 246, 0.2);
     }
 
+    .batch-url-box {
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .batch-url-box textarea {
+      width: 100%;
+      height: 70px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 6px;
+      color: var(--text-main);
+      font-size: 11px;
+      font-family: monospace;
+      padding: 6px 8px;
+      resize: vertical;
+      line-height: 1.4;
+    }
+
+    .batch-url-box textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .batch-url-actions {
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
     .file-drop-zone {
       border: 2px dashed var(--input-border);
       border-radius: 6px;
@@ -407,27 +445,7 @@
       margin-left: 6px;
     }
 
-    .zoom-controls {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      background: #0b1120;
-      padding: 2px 6px;
-      border-radius: 6px;
-      border: 1px solid var(--card-border);
-    }
 
-    .zoom-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 0 3px;
-    }
-    .zoom-btn:hover { color: var(--text-main); }
-    .zoom-label { font-size: 10px; color: var(--text-muted); font-family: monospace; min-width: 38px; text-align: center; }
 
     .preview-viewport {
       flex: 1;
@@ -533,6 +551,27 @@
       pointer-events: none;
     }
 
+    .github-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .github-link:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #475569;
+    }
+
     .range-wrap {
       display: flex;
       align-items: center;
@@ -553,13 +592,12 @@
       <span>纯前端 离线运行</span>
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
-      <div class="zoom-controls">
-        <span style="font-size: 10px; color: var(--text-muted);">缩放</span>
-        <button class="zoom-btn" onclick="changeZoom(-0.05)">-</button>
-        <span class="zoom-label" id="zoomVal">Auto</span>
-        <button class="zoom-btn" onclick="changeZoom(0.05)">+</button>
-        <button class="color-btn" style="font-size: 9px; padding: 1px 3px;" onclick="resetZoom()">适应</button>
-      </div>
+      <a href="https://github.com/binaryu/media-cover" target="_blank" rel="noopener noreferrer" class="github-link" title="GitHub 源码仓库">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+        </svg>
+        GitHub
+      </a>
       <button class="btn-primary" onclick="exportPoster()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         下载 1080P 高清封面 (PNG)
@@ -714,9 +752,9 @@
         <div id="tab-layout" class="tab-panel">
           <div class="section-title">排版预设模式 (一键展开/层叠/网格)</div>
           <div class="preset-mode-group">
-            <button class="preset-mode-btn" onclick="applyLayoutMode('expanded')"> 完全展开 (不重叠)</button>
-            <button class="preset-mode-btn active" onclick="applyLayoutMode('cascade')">经典错落 (轻微重叠)</button>
-            <button class="preset-mode-btn" onclick="applyLayoutMode('grid')"> 齐整方阵 (垂直网格)</button>
+            <button class="preset-mode-btn" onclick="applyLayoutMode('expanded')">完全展开 (不重叠)</button>
+            <button class="preset-mode-btn active" onclick="applyLayoutMode('cascade')">经典错落 (层叠)</button>
+            <button class="preset-mode-btn" onclick="applyLayoutMode('grid')">齐整方阵 (垂直网格)</button>
           </div>
 
           <div class="section-title" style="margin-top: 10px;">海报卡片倾角与尺寸</div>
@@ -731,7 +769,7 @@
             <div class="form-group">
               <label>卡片宽度 <span class="val-badge" id="cardWidthBadge">330px</span></label>
               <div class="range-wrap">
-                <input type="range" id="inputCardW" min="160" max="480" value="330" />
+                <input type="range" id="inputCardW" min="160" max="520" value="330" />
               </div>
             </div>
             <div class="form-group">
@@ -747,13 +785,13 @@
             <div class="form-group">
               <label>列横向间距 (X) <span class="val-badge" id="colGapBadge">360px</span></label>
               <div class="range-wrap">
-                <input type="range" id="inputColGap" min="150" max="600" value="360" />
+                <input type="range" id="inputColGap" min="150" max="800" value="360" />
               </div>
             </div>
             <div class="form-group">
               <label>行纵向间距 (Y) <span class="val-badge" id="rowGapBadge">420px</span></label>
               <div class="range-wrap">
-                <input type="range" id="inputRowGap" min="200" max="650" value="420" />
+                <input type="range" id="inputRowGap" min="200" max="800" value="420" />
               </div>
             </div>
           </div>
@@ -791,7 +829,16 @@
             <p>支持批量选择（图片直接在画布内支持拖拽交换位置）</p>
           </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+          <div class="section-title" style="margin-top: 10px;">批量海报链接导入 (URL)</div>
+          <div class="batch-url-box">
+            <textarea id="batchUrlInput" placeholder="每行一条图片 URL，支持 http:// 或 https:// 链接"></textarea>
+            <div class="batch-url-actions">
+              <button class="color-btn" onclick="importBatchUrls(false)">追加导入</button>
+              <button class="color-btn" style="background: rgba(59, 130, 246, 0.2); border-color: var(--accent); color: #93c5fd;" onclick="importBatchUrls(true)">覆盖导入</button>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
             <div class="section-title" style="margin: 0;">已载入素材清单 (<span id="imgCount">9</span>)</div>
             <div style="display: flex; gap: 6px;">
               <button class="color-btn danger-btn" onclick="clearAllPosters()">🗑️ 清空所有</button>
@@ -809,8 +856,7 @@
     <div class="preview-panel">
       <div class="preview-header">
         <div style="display: flex; align-items: center;">
-          <span style="font-size: 13px; font-weight: 600;">1080P 实时渲染预览</span>
-          <span class="resolution-badge">1920 × 1080 原生</span>
+          <span style="font-size: 13px; font-weight: 600;">1080P 预览</span>
         </div>
       </div>
 
@@ -912,7 +958,6 @@
     const imgCount = document.getElementById('imgCount');
     const previewViewport = document.getElementById('previewViewport');
     const scalerWrapper = document.getElementById('scalerWrapper');
-    const zoomVal = document.getElementById('zoomVal');
 
     // 选项卡切换
     function switchTab(tabId) {
@@ -926,21 +971,24 @@
       if (targetPanel) targetPanel.classList.add('active');
     }
 
+
+
     // 预设排版模式快速应用
     function applyLayoutMode(mode) {
       document.querySelectorAll('.preset-mode-btn').forEach(b => b.classList.remove('active'));
-      event?.target?.classList.add('active');
+      const targetBtn = Array.from(document.querySelectorAll('.preset-mode-btn')).find(b => b.getAttribute('onclick')?.includes(mode));
+      if (targetBtn) targetBtn.classList.add('active');
 
       if (mode === 'expanded') {
         // 完全展开、不重叠
         cardAngle.value = 15;
-        inputCardW.value = 260;
-        inputCardRadius.value = 24;
-        inputColGap.value = 320;
-        inputRowGap.value = 400;
-        inputStepOffset.value = 40;
-        inputGridX.value = 880;
-        inputGridY.value = -40;
+        inputCardW.value = 240;
+        inputCardRadius.value = 22;
+        inputColGap.value = 350;
+        inputRowGap.value = 370;
+        inputStepOffset.value = 35;
+        inputGridX.value = 900;
+        inputGridY.value = -30;
       } else if (mode === 'cascade') {
         // 经典错落
         cardAngle.value = 20;
@@ -954,13 +1002,13 @@
       } else if (mode === 'grid') {
         // 齐整方阵
         cardAngle.value = 0;
-        inputCardW.value = 270;
+        inputCardW.value = 240;
         inputCardRadius.value = 18;
-        inputColGap.value = 310;
-        inputRowGap.value = 400;
+        inputColGap.value = 280;
+        inputRowGap.value = 360;
         inputStepOffset.value = 0;
-        inputGridX.value = 920;
-        inputGridY.value = -30;
+        inputGridX.value = 980;
+        inputGridY.value = -10;
       }
 
       cardAngleBadge.textContent = cardAngle.value + '°';
@@ -974,8 +1022,6 @@
 
       renderPosters();
     }
-
-    // 计算 3x3 矩阵绝对坐标
     function calculateCardPositions() {
       const baseX = parseFloat(inputGridX.value) || 860;
       const baseY = parseFloat(inputGridY.value) || -60;
@@ -995,40 +1041,15 @@
       return positions;
     }
 
-    // 智能等比缩放控制器
-    let currentScale = 0.4;
-    let isAutoZoom = true;
-
-    function calcAutoZoom() {
+    // 智能等比自适应缩放
+    function autoScaleViewport() {
       const vWidth = previewViewport.clientWidth - 20;
       const vHeight = previewViewport.clientHeight - 20;
-      if (vWidth <= 0 || vHeight <= 0) return 0.4;
+      if (vWidth <= 0 || vHeight <= 0) return;
       const scaleX = vWidth / 1920;
       const scaleY = vHeight / 1080;
-      return Math.min(scaleX, scaleY) * 0.96;
-    }
-
-    function updateZoomDisplay() {
-      scalerWrapper.style.transform = `scale(${currentScale})`;
-      zoomVal.textContent = isAutoZoom ? `Auto (${Math.round(currentScale * 100)}%)` : `${Math.round(currentScale * 100)}%`;
-    }
-
-    function autoScaleViewport() {
-      if (isAutoZoom) {
-        currentScale = calcAutoZoom();
-        updateZoomDisplay();
-      }
-    }
-
-    function changeZoom(delta) {
-      isAutoZoom = false;
-      currentScale = Math.max(0.15, Math.min(1.0, currentScale + delta));
-      updateZoomDisplay();
-    }
-
-    function resetZoom() {
-      isAutoZoom = true;
-      autoScaleViewport();
+      const scale = Math.min(scaleX, scaleY) * 0.96;
+      scalerWrapper.style.transform = `scale(${scale})`;
     }
 
     const resizeObserver = new ResizeObserver(() => {
@@ -1335,6 +1356,51 @@
 
     function loadDefaultPosters() {
       currentPosters = JSON.parse(JSON.stringify(DEFAULT_POSTERS));
+      renderPosters();
+    }
+
+    function importBatchUrls(override = false) {
+      const textarea = document.getElementById('batchUrlInput');
+      const text = textarea.value.trim();
+      if (!text) {
+        alert('请先输入至少一条海报图片 URL');
+        return;
+      }
+
+      const lines = text.split('\n')
+        .map(l => l.trim())
+        .filter(l => l.length > 0 && /^https?:\/\//i.test(l));
+
+      if (lines.length === 0) {
+        alert('未识别到有效的 http/https 图片链接，请检查格式');
+        return;
+      }
+
+      const newItems = lines.map((url, idx) => {
+        let name = '在线海报 ' + (idx + 1);
+        try {
+          const parsed = new URL(url);
+          const pathname = parsed.pathname;
+          const fileName = pathname.substring(pathname.lastIndexOf('/') + 1);
+          if (fileName) {
+            name = decodeURIComponent(fileName.replace(/\.[^/.]+$/, ''));
+          }
+        } catch (e) {}
+
+        return {
+          id: 'url_' + Date.now() + '_' + idx,
+          name: name || ('在线海报 ' + (idx + 1)),
+          url: url
+        };
+      });
+
+      if (override) {
+        currentPosters = newItems;
+      } else {
+        currentPosters = [...currentPosters, ...newItems];
+      }
+
+      textarea.value = '';
       renderPosters();
     }
 
